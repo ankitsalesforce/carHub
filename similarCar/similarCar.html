@@ -1,0 +1,42 @@
+<template>
+    <lightning-card icon-name="standard:asset_relationship" title="Similar Car"> 
+        <div class="slds-p-around_medium">
+            <div class="slds-align_absolute-center">
+                <lightning-button variant="brand" label="Find Similar Car" onclick={handleSimilarCarSearch}></lightning-button>
+            </div>
+            <template if:true={buttonClicked}>
+                <template if:true={similarCars} >
+                    <template for:each={similarCars} for:item="car">
+                       <div key={car.Id}>
+                           <lightning-card title={car.Name}>
+                            <lightning-layout>
+                                <lightning-layout-item size="6" flexibility="auto" padding="around-small">
+                                    <img src={car.Picture_URL__c} alt="Car Picure">
+                                </lightning-layout-item>
+                                <lightning-layout-item size="6" flexibility="auto" padding="around-small">
+                                    <p><strong> Make : </strong>  {car.Make__c} </p>
+                                    <p> <strong> Category : </strong> {car.Category__c} </p>
+                                   
+                                    <p> <strong> Price : </strong> 
+                                        <lightning-formatted-number value={car.MSRP__c} format-style="currency" currency-code="USD"></lightning-formatted-number>
+                                     </p>
+
+                                    <p> <strong> Fuel Type  : </strong> {car.Fuel_Type__c} </p>
+                                    <p> <strong> Control  : </strong> {car.Control__c} </p>
+                                </lightning-layout-item>
+                            </lightning-layout>
+                                
+                           
+                           </lightning-card>
+                            
+                       </div>
+                    </template>
+
+                </template>
+                <template if:false={similarCars}>
+                     <p style="text-align: center;"> <i>Opps ..No Match Found ..!! </i></p>
+                </template>
+            </template>
+        </div>
+    </lightning-card>
+</template>

@@ -1,0 +1,9 @@
+<template>
+    <div class="slds-p-around_large">
+        <h2 style='text-align:center;font-size:25px;'><b><i> Welcome to Car Hub </i></b></h2>
+        <p style='text-align:center;'> <img src={placeHolderImage} alt="Car PlaceHolder"> </p>
+        <template if:true={message}>
+            <p style='text-align:center;font-size:18px;'><i> {message} </i></p>
+        </template>
+    </div>
+</template>

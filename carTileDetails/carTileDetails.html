@@ -1,0 +1,16 @@
+<template>
+    <lightning-card title="Car Available">
+        <div class="slds-p-around_medium wrapper">
+            <template if:true={carDetails.length} >
+                <div class="content">
+                    <template for:each={carDetails} for:item="car">
+                         <c-car-tiles key={car.Id} eachcardetails={car} onselected={handleSelectedCar}></c-car-tiles>
+                    </template>
+                </div>
+            </template>
+            <template if:false={carDetails.length}>
+                <c-place-holder message="Car is not available,Please clear your filter"></c-place-holder>
+            </template>
+        </div>
+    </lightning-card>
+</template>
